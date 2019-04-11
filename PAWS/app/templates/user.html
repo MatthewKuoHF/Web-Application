@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+	<h1>User: {{ user.username }}</h1>
+	<p>Your name: {{ user.fname }} {{ user.lname }}</p>
+	<p>Your department: {{ user.department }}</p>
+	<p>Your degree: {{ user.degree }}</p>
+	<p>Your email: {{ user.email }}</p>
+	<p>Your address: {{ user.address1 }} {{ user.address2 }}</p>
+	<p>Your city: {{ user.city }}</p>
+	<p>Your state: {{ user.state }}</p>
+	<p>Your zip code: {{ user.zip }}</p>
+{% endblock %}

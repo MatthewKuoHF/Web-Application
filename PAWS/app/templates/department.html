@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+	<form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+		<p>
+			{{ form.year.label }}<br>
+			{{ form.year }}
+		</p>
+		<p>
+			{{ form.semester.label }}<br>
+			{{ form.semester }}
+		</p>
+		<p>
+			{{ form.department.label }}<br>
+			{{ form.department }}
+		</p>
+		<p> {{ form.submit() }}</p>
+		<hr>
+		<p>Courses: </p>
+		{% for i in range(course_list|length) %}
+		<p>{{ cname[i] }}: {{ ctime1[i][0] }} {{ ctime1[i][1] }}{{ ctime1[i][2] }}:{{ ctime1[i][3] }}{{ ctime1[i][4] }}, {{ ctime2[i][0] }} {{ ctime2[i][1] }}{{ ctime2[i][2] }}:{{ ctime2[i][3] }}{{ ctime2[i][4] }}</p>
+		{% endfor %}
+		<hr>
+		<p>Enroll statistics:</p>
+		<style type="text/css">
+			table, th, tr, td{border-color:black;border-collapse:collapse;border-style:solid;border-width:1px;padding:10px 5px;}
+		</style>
+		<table>
+		{% for i in range(cstudent|length) %}
+		{% if i==0 %}
+		<tr style="font-weight:bold;">
+			<th>Course Name</th>
+			<th>Student Name</th>
+		<tr>
+		{% endif %}
+		<tr>
+		<td><p>{{ cstudent[i][0] }}</p></td><td><p>{{ cstudent[i][1][0] }}</p></td>
+		</tr>
+		{% endfor %}
+		<table>
+	</form>
+{% endblock %}

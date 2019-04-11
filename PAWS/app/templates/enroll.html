@@ -1,0 +1,20 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <form action="" method="post" novalidate>
+        {{ form.hidden_tag() }}
+        <h1>
+            {{ current_user.username }}<br>
+        </h1>
+		<p>
+			{{ form.course.label }}<br>
+			{{ form.course }}
+		</p>
+		<p> {{ form.submit() }}</p>
+		<p>Courses you have enrolled: <p>
+		{% for i in range(tl|length) %}
+		<p>{{ cname[i] }}: {{cdepartment[i]}} - {{ ctime1[i][0] }} {{ ctime1[i][1] }}{{ ctime1[i][2] }}:{{ ctime1[i][3] }}{{ ctime1[i][4] }}, {{ ctime2[i][0] }} {{ ctime2[i][1] }}{{ ctime2[i][2] }}:{{ ctime2[i][3] }}{{ ctime2[i][4] }}</p>
+		{% endfor %}	
+	</form>
+
+{% endblock %}

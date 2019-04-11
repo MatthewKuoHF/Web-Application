@@ -1,0 +1,36 @@
+<html>
+    <head>
+		<link rel="icon" href="https://www.gsu.edu/wp-content/themes/gsu-flex-2/images/mobile-logo.png">
+        {% if title %}
+        <title>PAWS</title>
+        {% else %}
+        <title> Welcome to Microblog</title>
+        {% endif %}
+    </head>
+    <body>
+        <div>Georgia State University PAWS: 
+            <a href="{{ url_for('index') }}">Home</a>
+          	<a href="{{ url_for('department') }}">Check</a>
+			<a href="{{ url_for('accepted') }}">Request</a>
+			<a href="{{ url_for('statistics') }}">Statistics</a>
+			{% if current_user.is_anonymous %}
+			<a href="{{ url_for('login') }}">Sign in</a>
+			{% else %}
+			<a href="{{ url_for('user')}}">Profile</a>
+			<a href="{{ url_for('enroll') }}">Enroll</a>
+			<a href="{{ url_for('logout') }}">Logout</a>
+			{% endif %}
+        </div>
+        <hr>
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+        <ul>
+            {% for message in messages %}
+            <li>{{ message }}</li>
+            {% endfor %}
+        </ul>
+        {% endif %}
+        {% endwith %}
+        {% block content %}{% endblock %}
+    </body>
+</html>
